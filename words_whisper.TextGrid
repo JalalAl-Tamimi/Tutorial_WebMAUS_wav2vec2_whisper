@@ -1,0 +1,102 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0.0
+xmax = 10.36
+tiers? <exists>
+size = 1
+item []:
+	item [1]:
+		class = "IntervalTier"
+		name = "word"
+		xmin = 0.0
+		xmax = 10.36
+		intervals: size = 22
+			intervals [1]:
+				xmin = 0.0
+				xmax = 0.52
+				text = " And"
+			intervals [2]:
+				xmin = 0.52
+				xmax = 0.84
+				text = " so"
+			intervals [3]:
+				xmin = 0.84
+				xmax = 1.18
+				text = " my"
+			intervals [4]:
+				xmin = 1.18
+				xmax = 1.56
+				text = " fellow"
+			intervals [5]:
+				xmin = 1.56
+				xmax = 2.1
+				text = " Americans"
+			intervals [6]:
+				xmin = 2.1
+				xmax = 3.72
+				text = " ask"
+			intervals [7]:
+				xmin = 3.72
+				xmax = 4.24
+				text = " not"
+			intervals [8]:
+				xmin = 4.24
+				xmax = 5.52
+				text = " what"
+			intervals [9]:
+				xmin = 5.52
+				xmax = 5.76
+				text = " your"
+			intervals [10]:
+				xmin = 5.76
+				xmax = 6.24
+				text = " country"
+			intervals [11]:
+				xmin = 6.24
+				xmax = 6.62
+				text = " can"
+			intervals [12]:
+				xmin = 6.62
+				xmax = 6.82
+				text = " do"
+			intervals [13]:
+				xmin = 6.82
+				xmax = 7.08
+				text = " for"
+			intervals [14]:
+				xmin = 7.08
+				xmax = 7.42
+				text = " you,"
+			intervals [15]:
+				xmin = 7.42
+				xmax = 8.46
+				text = " ask"
+			intervals [16]:
+				xmin = 8.46
+				xmax = 8.76
+				text = " what"
+			intervals [17]:
+				xmin = 8.76
+				xmax = 9.04
+				text = " you"
+			intervals [18]:
+				xmin = 9.04
+				xmax = 9.32
+				text = " can"
+			intervals [19]:
+				xmin = 9.32
+				xmax = 9.56
+				text = " do"
+			intervals [20]:
+				xmin = 9.56
+				xmax = 9.78
+				text = " for"
+			intervals [21]:
+				xmin = 9.78
+				xmax = 9.94
+				text = " your"
+			intervals [22]:
+				xmin = 9.94
+				xmax = 10.36
+				text = " country."

@@ -1,0 +1,268 @@
+---
+title: "Using whisper in R"
+author:
+  name: "Jalal Al-Tamimi"
+  affiliation: Université Paris Cité
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_notebook:
+    highlight: pygments
+    number_sections: yes
+    toc: yes
+    toc_depth: 6
+    toc_float:
+      collapsed: yes
+      fig_crop: no
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+Using whisper in R by Jalal Al-Tamimi
+==============================
+
+
+During this session, we will use `whisper` to automatically transcribe an audio file. We will use the R package `reticulate` to run Python code from within Rstudio. At the end of the session, we will export the transcription to a  `TextGrid` file that can be opened in `Praat` for further acoustic analysis.
+
+# Loading and installation
+
+## Loading packages 
+
+First, make sure to have already installed and loaded the package `reticulate`.
+
+
+```{r warning=FALSE, message=FALSE, error=FALSE}
+### Use the code below to check if you have all required packages installed. If some are not installed already, the code below will install these. If you have all packages installed, then you could load them with the second code.
+requiredPackages = c('reticulate', 'tidyverse')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p, dependencies = TRUE)
+  library(p,character.only = TRUE)
+}
+options(ggrepel.max.overlaps = Inf)
+```
+
+
+
+## Installation of `whisper`
+
+
+Make sure to uncomment the line codes below if you haven't installed `openai-whisper`. To do so, we need to install it using the function `py_install` from `reticulate`. This needs to be done once, otherwise, the package will be installed again (and this may take some time). 
+We could use the new R package `audio.whisper`that is built within R. However, the first time you use this package, you will notice that to transcribe the audio file below, it will take you more than 20 minutes. All subsequent running if the code will be relatively faster. In our case, we use the original implementation of `whisper` in Python that we run via Rstudio and the reticulate package, which is much faster.
+
+
+```{r}
+# install whisper
+## py_install("openai-whisper", pip = TRUE) # remember to uncomment and do this first
+```
+
+## installation of `textgrid`
+
+```{python}
+## !pip install textgrid
+```
+
+
+## Loading and using `whisper`
+
+### Audio files
+
+We obtain various audio files from the audio.whisper package's github website, [here](https://github.com/bnosac/audio.whisper/tree/master/inst/samples)
+We will use the audio file `jfk.wav` which is a recording of John F. Kennedy's inaugural address in English. We can also use other audio files, such as `audio_ar.wav` which is a recording in Arabic, or `stereo.wav` which is a Spanish recording with dual channel to allow for speaker diarisation.
+
+
+```{r}
+# load whisper module 
+whisper <- import("whisper")
+audio <- "jfk.wav" #File in English
+##audio <- "audio_ar.wav" #File in Arabic
+##audio <- "stereo.wav" #File in Spanish with dual channel to allow for speaker diarisation
+```
+
+
+### Download and load model
+
+We download the whisper model. In our case, we use the `base` model as it provides better predictions than the `tiny` model
+
+```{r}
+whisper_model <- "base" # Size of the transcription model
+# (Down)load the model
+print("Loading the model")
+model <- whisper$load_model(whisper_model)
+```
+
+
+### Transcription
+
+```{r}
+print("Transcription started")
+ 
+transcription <- model$transcribe(audio, language = "en", verbose = FALSE, word_timestamps = TRUE)
+ 
+print("Transcription completed")
+```
+
+
+```{r}
+transcription %>% 
+  head(6)
+```
+
+### export 
+
+#### First sentence
+
+```{r}
+textDF1 <- data.frame(t(transcription$segments))[1,1]
+textDF1 %>% 
+  head(6)
+```
+
+#### Second sentence
+
+```{r}
+textDF2 <- data.frame(t(transcription$segments))[1,2]
+textDF2 %>% 
+  head(6)
+```
+
+
+#### Dataframes
+
+```{r}
+textDF1 <- data.frame(textDF1)[1,]
+textDF2 <- data.frame(textDF2)[1,]
+textDF1
+textDF2
+```
+
+
+#### Full sentence
+
+##### Sentence 1
+
+```{r}
+textDF1Sentence <- textDF1[,c(5,3,4)]
+textDF1Sentence
+```
+
+##### Sentence 2
+
+```{r}
+textDF2Sentence <- textDF2[,c(5,3,4)]
+textDF2Sentence
+```
+
+
+#### Words 
+
+##### Sentence 1
+
+```{r}
+textDF1Words <- textDF1[,c(11:66)]
+textDF1Words <- textDF1Words %>% 
+  rename_with(~str_remove(., 'words.')) %>% 
+  rename(word.0 = word,
+         start.0 = start,
+         end.0 = end,
+         probability.0 = probability)
+colnames(textDF1Words) <- str_replace(colnames(textDF1Words), "\\d+", 
+      function(x) sprintf("%02d", as.integer(x)))
+
+textDF1Words
+```
+
+
+```{r}
+textDF1Words <- textDF1Words %>% 
+  pivot_longer(cols= starts_with(c("word", "start", "end", "probability")),
+               names_to = c(".value", "limit"),
+               names_pattern = "(.*)(..)$") %>% 
+  rename(word = word.,
+         start = start.,
+         end = end.,
+         probability = probability.)
+
+textDF1Words
+```
+
+
+
+##### Sentence 2
+
+```{r}
+textDF2Words <- textDF2[,c(11:42)]
+textDF2Words <- textDF2Words %>% 
+  rename_with(~str_remove(., 'words.')) %>% 
+  rename(word.0 = word,
+         start.0 = start,
+         end.0 = end,
+         probability.0 = probability)
+colnames(textDF2Words) <- str_replace(colnames(textDF2Words), "\\d+", 
+      function(x) sprintf("%02d", as.integer(x)))
+
+textDF2Words
+```
+
+
+```{r}
+textDF2Words <- textDF2Words %>% 
+  pivot_longer(cols= starts_with(c("word", "start", "end", "probability")),
+               names_to = c(".value", "limit"),
+               names_pattern = "(.*)(..)$") %>% 
+  rename(word = word.,
+         start = start.,
+         end = end.,
+         probability = probability.)
+
+textDF2Words
+```
+
+
+#### Merging 
+
+```{r}
+textDFFull <- rbind(textDF1Words, textDF2Words)
+
+textDFFull
+write.csv(textDFFull, "words_whisper.csv", row.names = FALSE)
+
+```
+
+
+
+
+### Transform to TextGrid
+
+```{python}
+import csv
+import textgrid # install with pip intall textgrid
+# Load the CSV data
+with open("words_whisper.csv",
+          "r", encoding="utf-8") as f:
+    reader = csv.DictReader(f,
+                            delimiter="," 
+                            )
+    data = [row for row in reader]
+
+# Create a TextGrid object
+tg = textgrid.TextGrid()
+
+# Create IntervalTier objects
+transcript_tier = textgrid.IntervalTier(name="word")
+
+# Populate the interval tiers
+for row in data:
+    start_time = float(row["start"])
+    end_time = float(row["end"])
+    transcript_tier.add(start_time, end_time, row["word"])
+
+# Add the interval tiers to the TextGrid
+tg.append(transcript_tier)
+
+# Write the TextGrid to a file
+with open("words_whisper.TextGrid", "w", encoding="utf-8") as f:
+    tg.write(f)   
+    
+```
+
+
