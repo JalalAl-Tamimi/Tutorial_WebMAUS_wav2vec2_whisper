@@ -10,8 +10,9 @@ DOI: [https://doi.org/10.5281/zenodo.17485787](https://doi.org/10.5281/zenodo.17
 
 
 and cite original link for: 
-a. Forced-alignment with wav2vec2 comes from https://docs.pytorch.org/audio/stable/tutorials/forced_alignment_tutorial.html
-b. Audio file https://github.com/bnosac/audio.whisper/tree/master/inst/samples
+
+a. Forced-alignment with wav2vec2 comes from [https://docs.pytorch.org/audio/stable/tutorials/forced_alignment_tutorial.html](https://docs.pytorch.org/audio/stable/tutorials/forced_alignment_tutorial.html)
+b. Audio file [https://github.com/bnosac/audio.whisper/tree/master/inst/samples](https://github.com/bnosac/audio.whisper/tree/master/inst/samples)
 
 
 Here is a list of all required files:
