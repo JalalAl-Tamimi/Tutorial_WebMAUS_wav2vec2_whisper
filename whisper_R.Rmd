@@ -67,15 +67,13 @@ We could use the new R package `audio.whisper`that is built within R. However, t
 ### Audio files
 
 We obtain various audio files from the audio.whisper package's github website, [here](https://github.com/bnosac/audio.whisper/tree/master/inst/samples)
-We will use the audio file `jfk.wav` which is a recording of John F. Kennedy's inaugural address in English. We can also use other audio files, such as `audio_ar.wav` which is a recording in Arabic, or `stereo.wav` which is a Spanish recording with dual channel to allow for speaker diarisation.
+We will use the audio file `jfk.wav` which is a recording of John F. Kennedy's inaugural address in English. 
 
 
 ```{r}
 # load whisper module 
 whisper <- import("whisper")
 audio <- "jfk.wav" #File in English
-##audio <- "audio_ar.wav" #File in Arabic
-##audio <- "stereo.wav" #File in Spanish with dual channel to allow for speaker diarisation
 ```
 
 
