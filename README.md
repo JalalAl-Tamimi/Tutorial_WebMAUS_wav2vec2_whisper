@@ -6,7 +6,7 @@ Jalal Al-Tamimi (2025): *Arabic Forced Alignment: From WebMAUS to Whisper and wa
 Use this to cite this repository and the material in it:
 
 Al-Tamimi, J. (2025). *Arabic Forced Alignment: From WebMAUS to Whisper and wav2vec2 [TAL workshop Rencontres des Jeunes Chercheurs en Parole 2025 (11e édition)]*. [https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/). 
-[![DOI](https://zenodo.org/badge/1084384562.svg)](https://doi.org/10.5281/zenodo.17485787)
+DOI: [https://doi.org/10.5281/zenodo.17485787](https://doi.org/10.5281/zenodo.17485787)
 
 
 and cite original link for: 
