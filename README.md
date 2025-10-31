@@ -39,7 +39,6 @@ This contains original material to run whisper for automatic transcription. The 
 
 1. [whisper_R.Rmd](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/whisper_R.Rmd): This is an Rmd file allowing to run code in both R and the Python (towards the end)
 2. [whisper_R.nb.html](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/whisper_R.nb.html): This is an R notebook with the output of results
-3. [whisper_R.ipynb](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/whisper_R.ipynb): This is an ipynb file. There are issues in running the code and uploading the audio file. Use at your risk.
-4. [jfk.wav](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/jfk.wav): This is the audio file used to run the whisper code. The audio file came originally from [here](https://github.com/bnosac/audio.whisper/tree/master/inst/samples)
-5. [words_whisper.TextGrid](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/words_whisper.TextGrid): This is the Praat TextGrid file generated with one tier for words
+3. [jfk.wav](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/jfk.wav): This is the audio file used to run the whisper code. The audio file came originally from [here](https://github.com/bnosac/audio.whisper/tree/master/inst/samples)
+4. [words_whisper.TextGrid](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/words_whisper.TextGrid): This is the Praat TextGrid file generated with one tier for words
 
