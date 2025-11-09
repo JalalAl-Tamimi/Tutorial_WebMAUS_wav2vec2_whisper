@@ -3,6 +3,8 @@
 This repository contains all necessary material for the tutorial: 
 Jalal Al-Tamimi (2025): *Arabic Forced Alignment: From WebMAUS to Whisper and wav2vec2* delivered during the 11th RJCP (Rencontres Jeunes Chercheurs en Parole) - Workshop TAL (LLF) on 5th of November 2025.
 
+The slides of the talk can be found [here](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/Al-Tamimi_RJCP_2025.pdf).
+
 Use this to cite this repository and the material in it:
 
 Al-Tamimi, J. (2025). *Arabic Forced Alignment: From WebMAUS to Whisper and wav2vec2 [TAL workshop Rencontres des Jeunes Chercheurs en Parole 2025 (11e édition)]*. [https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/). 
