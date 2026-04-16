@@ -21,7 +21,7 @@ Here is a list of all required files:
 
 ## Material for WebMAUS
 
-1. [Arabic WebMAUS.pdf](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/Arabic WebMAUS.pdf): This is the PDF of the Al-Tamimi et al. (2022) LREC paper
+1. [Arabic WebMAUS.pdf](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/ArabicWebMAUS.pdf): This is the PDF of the Al-Tamimi et al. (2022) LREC paper
 2. [example.wav](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/example.wav): This is the wav file with the transcriptions of the Arabic text, from Al-Tamimi et al. (2022) LREC paper
 3. [example.txt](https://jalalal-tamimi.github.io/Tutorial_WebMAUS_wav2vec2_whisper/example.txt): This is the text file with the transcriptions of the Arabic text, from Al-Tamimi et al. (2022) LREC paper
 
